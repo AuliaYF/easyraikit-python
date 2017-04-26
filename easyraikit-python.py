@@ -23,7 +23,7 @@ class Rai:
 					return(r)
 				else:
 					print(r['error'])
-					return(r['error'])
+					return None
 			except:
 				sleep(0.5)
 				r = requests.post('', data = json.dumps(request)).json()
@@ -32,10 +32,12 @@ class Rai:
 					return(r)
 				else:
 					print(r['error'])
-					return(r['error'])
+					return None
 
 		return function
 
 rai = Rai()
 block_count = rai.block_count()
-print("Block Count: {:,} ({:,})".format(int(block_count['count']), int(block_count['unchecked'])))
+
+if block_count is not None:
+	print("Block Count: {:,} ({:,})".format(int(block_count['count']), int(block_count['unchecked'])))
