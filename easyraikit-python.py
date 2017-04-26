@@ -2,6 +2,7 @@ import json
 import requests
 import configparser
 from time import sleep
+from common_rai import *
 
 config = configparser.ConfigParser()
 config.read('config.cfg')
@@ -41,3 +42,5 @@ block_count = rai.block_count()
 
 if block_count is not None:
 	print("Block Count: {:,} ({:,})".format(int(block_count['count']), int(block_count['unchecked'])))
+
+print(raiblocks_account_validate('xrb_3o7iocfcx1gcpa4q33ze56jmgicgct15kz4b4feu8mwxr43ju3t8cu668nei'))
