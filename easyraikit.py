@@ -1,13 +1,35 @@
+import re
+import math
 import json
 import requests
 import configparser
 from time import sleep
-from common_rai import *
 
 config = configparser.ConfigParser()
 config.read('config.cfg')
 server = config.get('main', 'server')
 wallet = config.get('main', 'wallet')
+wallet_password = config.get('main', 'wallet_password')
+
+def raiblocks_account_validate(account):
+	if isinstance(account, str):
+		if ('xrb_1' in account) or ('xrb_3' in account) and (len(account) == 64):
+			account = account[4:]
+			char_validation = re.search('^[13456789abcdefghijkmnopqrstuwxyz]+$', account)
+			if char_validation is not None:
+				return True
+			else:
+				return False
+		else:
+			return False
+	else:
+		return False
+
+def raiblocks_mrai_from_raw(raw):
+	return int(math.floor(raw / (10 ** 30)))
+
+def raiblocks_mrai_to_raw(mrai):
+	return int(math.floor(mrai * (10 ** 30)))
 
 class Rai:
 	def __getattr__(self, name, *args):
@@ -36,9 +58,3 @@ class Rai:
 					return None
 
 		return function
-
-rai = Rai()
-block_count = rai.block_count()
-
-if block_count is not None:
-	print("Block Count: {:,} ({:,})".format(int(block_count['count']), int(block_count['unchecked'])))
