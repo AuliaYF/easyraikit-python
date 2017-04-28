@@ -8,9 +8,9 @@ rai = Rai()
 
 def raiblocks_account_validate(account):
 	if isinstance(account, str):
-		if ('xrb_1' in account) or ('xrb_3' in account) and (len(account) == 64):
+		if ("xrb_1" in account) or ("xrb_3" in account) and (len(account) == 64):
 			account = account[4:]
-			char_validation = re.search('^[13456789abcdefghijkmnopqrstuwxyz]+$', account)
+			char_validation = re.search("^[13456789abcdefghijkmnopqrstuwxyz]+$", account)
 			if char_validation is not None:
 				return True
 			else:
@@ -31,9 +31,9 @@ def raiblocks_unlock():
 	global wallet
 	global wallet_password
 
-	valid = rai.password_enter({'wallet': wallet, 'password': wallet_password})
+	valid = rai.password_enter({"wallet": wallet, "password": wallet_password})
 	if valid is not None:
-		return valid['valid']
+		return valid["valid"]
 	else:
 		return "Wallet unlock failed."
 
@@ -53,12 +53,12 @@ def raiblocks_bulk_send(source, bulk):
 	blocks = []
 	for obj in bulk:
 		start_time = time()
-		block = rai.send({'wallet': wallet, 'source': source, 'destination': obj['account'], 'amount': raiblocks_mrai_to_raw(obj['amount'])})
+		block = rai.send({"wallet": wallet, "source": source, "destination": obj["account"], "amount": raiblocks_mrai_to_raw(obj["amount"])})
 		if block is not None:
 			blocks.append({
-					'index': bulk.index(obj),
-					'block': block['block'],
-					'time_ellapsed': (time() - start_time)
+					"index": bulk.index(obj),
+					"block": block["block"],
+					"time_ellapsed": (time() - start_time)
 				})
 		sleep(5) # my server needs this xD
 

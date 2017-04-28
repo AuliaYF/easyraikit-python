@@ -10,28 +10,28 @@ class Rai:
 
 			if server:
 				request = {}
-				request['action'] = name
+				request["action"] = name
 				if args:
 					for key, value in args[0].items():
 						request[key] = value
 				try:
 					r = requests.post(server, data = json.dumps(request)).json()
 
-					if 'error' not in r:
+					if "error" not in r:
 						return(r)
 					else:
-						print(r['error'])
+						print(r["error"])
 						return None
 				except:
 					sleep(0.5)
-					r = requests.post('', data = json.dumps(request)).json()
+					r = requests.post(", data = json.dumps(request)).json()
 
-					if 'error' not in r:
+					if "error" not in r:
 						return(r)
 					else:
-						print(r['error'])
+						print(r["error"])
 						return None
 			else:
-				print('Wrong server configuration.')
+				print("Wrong server configuration.")
 
 		return function
