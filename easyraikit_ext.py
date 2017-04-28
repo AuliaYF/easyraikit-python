@@ -1,5 +1,6 @@
 import re
 import math
+from time import sleep
 from easyraikit_config import *
 from easyraikit import Rai
 
@@ -35,3 +36,30 @@ def raiblocks_unlock():
 		return valid['valid']
 	else:
 		return "Wallet unlock failed."
+
+def raiblocks_bulk_send(source, bulk):
+	"""Function for sending bulk transaction
+
+    Args:
+        source: The source address
+        bulk: The list containing array of account & amount in mrai
+
+    Returns:
+        Returns a list of valid transaction containing its index from bulk, block and time of excecution
+
+    """
+	global wallet
+
+	blocks = []
+	for obj in bulk:
+		start_time = time()
+		block = rai.send({'wallet': wallet, 'source': source, 'destination': obj['account'], 'amount': raiblocks_mrai_to_raw(obj['amount'])})
+		if block is not None:
+			blocks.append({
+					'index': bulk.index(obj),
+					'block': block['block'],
+					'time_ellapsed': (time() - start_time)
+				})
+		sleep(5) # my server needs this xD
+
+	return blocks
