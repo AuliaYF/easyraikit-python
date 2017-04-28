@@ -1,8 +1,7 @@
 # easyraikit-python
-RaiBlocks RPC Library for Python
+RaiBlocks RPC Library for Python. Python 3 is required
 
 # Python requirements
-- python3
 **Required non-default Python libraries**   
 - python-requests
 
