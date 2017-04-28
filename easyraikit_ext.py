@@ -1,6 +1,6 @@
 import re
 import math
-from time import sleep
+from time import sleep, time
 from easyraikit_config import *
 from easyraikit import Rai
 
