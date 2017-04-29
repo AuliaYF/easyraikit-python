@@ -55,11 +55,12 @@ def raiblocks_bulk_send(source, bulk):
 		start_time = time()
 		block = rai.send({"wallet": wallet, "source": source, "destination": obj["account"], "amount": raiblocks_mrai_to_raw(obj["amount"])})
 		if block is not None:
+			print(block['block'])
 			blocks.append({
 					"index": bulk.index(obj),
 					"block": block["block"],
 					"time_ellapsed": (time() - start_time)
 				})
-		sleep(5) # my server needs this xD
+		sleep(10) # my server needs this xD
 
 	return blocks
