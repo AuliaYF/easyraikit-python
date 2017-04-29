@@ -24,7 +24,7 @@ class Rai:
 						return None
 				except:
 					sleep(0.5)
-					r = requests.post(", data = json.dumps(request)).json()
+					r = requests.post(server, data = json.dumps(request)).json()
 
 					if "error" not in r:
 						return(r)
