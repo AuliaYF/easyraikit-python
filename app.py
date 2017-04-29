@@ -28,4 +28,4 @@ if unlocked == "1":
 		}
 	]
 
-	print(raiblocks_bulk_send("xrb_1bawnqs6cc9a91ziwoy7fgmdycyjk9r6dt7eerfgzdbysrfnbihfxzobt8c8", bulk))
+	raiblocks_bulk_send("xrb_1bawnqs6cc9a91ziwoy7fgmdycyjk9r6dt7eerfgzdbysrfnbihfxzobt8c8", bulk)
