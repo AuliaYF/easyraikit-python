@@ -7,5 +7,5 @@ RaiBlocks RPC Library for Python. Python 3 is required
 
 # How to use it?
 ```
-$ python app.py
+$ python test.py
 ```
