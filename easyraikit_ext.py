@@ -21,16 +21,22 @@ def raiblocks_account_validate(account):
 		return False
 
 def raiblocks_mrai_from_raw(raw):
-	return int(math.floor(int(raw) / (10 ** 30)))
+	return int(math.floor(raw / (10 ** 30)))
 
 def raiblocks_mrai_to_raw(mrai):
-	return int(math.floor(int(mrai) * (10 ** 30)))
+	return int(math.floor(mrai * (10 ** 30)))
 
 def raiblocks_rai_from_raw(raw):
-	return int(math.floor(int(raw) / (10 ** 25)))
+	return int(math.floor(raw / (10 ** 24)))
 
 def raiblocks_rai_to_raw(rai):
-	return int(math.floor(int(rai) * (10 ** 25)))
+	return int(math.floor(rai * (10 ** 24)))
+
+def raiblocks_krai_from_raw(raw):
+	return int(math.floor(raw / (10 ** 27)))
+
+def raiblocks_krai_to_raw(krai):
+	return int(math.floor(krai * (10 ** 27)))
 
 def raiblocks_unlock():
 	global rai
